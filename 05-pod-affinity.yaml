@@ -5,10 +5,9 @@ metadata:
   labels:
     app: pod-1
 spec:
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
+  containers:
+  - name: nginx
+    image: nginx
 ---
 apiVersion: v1
 kind: Pod
