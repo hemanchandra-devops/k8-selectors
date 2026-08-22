@@ -11,11 +11,26 @@ spec:
           - key: topology.kubernetes.io/zone
             operator: In
             values: 
-              - us-east-1b 
-          - key: disktype
+              - us-east-1c 
+          # - key: disktype
+          #   operator: In
+          #   values: 
+          #     - ssd  
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: app
             operator: In
-            values: 
-              - ssd             
+            values:
+            - roboshop
+      - weight: 50
+        preference:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - k8s        
   containers:
   - name: nginx
     image: nginx
