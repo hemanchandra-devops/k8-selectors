@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    purpose: taint
+    project: roboshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      purpose: taint
+      project: roboshop
+  template:
+    metadata:
+      labels:
+        purpose: taint
+        project: roboshop
+    spec:
+      nodeSelector:
+
+      containers:
+      - name: nginx
+        image: nginx
+      tolerations:
+      - key: "project"
+        operator: "Equal"
+        value: "roboshop"
+        effect: "NoSchedule"
